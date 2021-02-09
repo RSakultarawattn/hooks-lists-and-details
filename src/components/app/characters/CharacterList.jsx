@@ -15,7 +15,7 @@ const CharacterList = ({ characters }) => {
     </>
   ));
   return (
-    <ul>
+    <ul data-testid="characters">
       {characterElements}
     </ul>
   );
