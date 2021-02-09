@@ -1,21 +1,22 @@
-import  React, { Component, useState } from 'react';
-import fetch from 'superagent';
+import  React, { useEffect, useState } from 'react';
 import { getCharacters } from '../services/rickAndMortyApi';
+import CharacterList from '../components/app/characters/CharacterList';
 
 const DetailPage = () => {
-  const [character, setCharacter] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [characters, setCharacters] = useState([]);
+  const [loading, setLoading] = useState(false);
+
 
 
   useEffect(() => {
-    getCharacters().then((character) => {
-      setCharacter(character);
-      setLoading(true);
+    getCharacters().then((characters) => {
+      setCharacters(characters);
+      setLoading(false);
     });
   }, []);
 
   if(loading) return <h1>Loading</h1>;
-  return <CharacterList character={character} />;
+  return <CharacterList characters={characters} />;
 
 };
 

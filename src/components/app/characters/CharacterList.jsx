@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Character from './Character';
 import { Link } from 'react-router-dom';
-import DetailPage from './DetailPage';
+//import DetailPage from './DetailPage';
 
 const CharacterList = ({ characters }) => {
   const characterElements = characters.map(character => ( 
