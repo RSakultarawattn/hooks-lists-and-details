@@ -1,22 +1,24 @@
-import React, { Component } from 'react';
-import { getCharacters } from '../../services/rickAndMortyApi';
+import React, { useEffect, useState } from 'react';
+import { getCharacters } from '../../../services/rickAndMortyApi';
 import CharacterList from './CharacterList';
 
-export default class AllCharacters extends Component {
-    state = {
-      characters: []
-    }
 
-    componentDidMount() {
-      getCharacters()
-        .then(characters => this.setState({ characters }));
-    }
+const AllCharacters = () => {
+  const [characters, setCharacters] = useState([]);
+  
 
-    render() {
-      const { characters } = this.state;
+    
+  useEffect(() => {
+    getCharacters()
+      .then((characters) => {
+        setCharacters(characters);
+       
+      });
+  }, []);
 
-      return (
-        <CharacterList characters={characters} />
-      );
-    }
-}
+  
+  return <CharacterList characters={characters} />;
+
+};
+
+export default AllCharacters;

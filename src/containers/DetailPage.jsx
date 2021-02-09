@@ -1,22 +1,24 @@
 import  React, { useEffect, useState } from 'react';
-import { getCharacters } from '../services/rickAndMortyApi';
-import CharacterList from '../components/app/characters/CharacterList';
+import { getCharacterById } from '../services/rickAndMortyApi';
+import Character from '../components/app/characters/Character';
 
-const DetailPage = () => {
-  const [characters, setCharacters] = useState([]);
+
+const DetailPage = ({ match }) => {
+  const [character, setCharacter] = useState({});
   const [loading, setLoading] = useState(false);
 
 
 
   useEffect(() => {
-    getCharacters().then((characters) => {
-      setCharacters(characters);
-      setLoading(false);
-    });
+    getCharacterById(match.params.id)
+      .then((character) => {
+        setCharacter(character);
+        setLoading(false);
+      });
   }, []);
 
   if(loading) return <h1>Loading</h1>;
-  return <CharacterList characters={characters} />;
+  return <Character {...character} />;
 
 };
 
