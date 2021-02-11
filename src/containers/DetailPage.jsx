@@ -5,7 +5,7 @@ import Character from '../components/app/characters/Character';
 
 const DetailPage = ({ match }) => {
   const [character, setCharacter] = useState({});
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
 
 
@@ -29,9 +29,4 @@ export default DetailPage;
 
         
 
-// componentDidMount = async() => {
-//     // eslint-disable-next-line max-len
-//     const response = await fetch(`https://rickandmortyapi.com/api/character/${this.props.match.params.id}`);
-//     console.log(response)
-//     this.setState({ character: response.body, Loading: false });
-//   }
+
