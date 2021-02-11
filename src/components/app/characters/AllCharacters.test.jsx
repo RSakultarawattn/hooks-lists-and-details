@@ -17,7 +17,7 @@ describe('CharacterById container', () => {
     afterAll(() => server.close());
   });
 
-  it('fetches and displays a characters details', async() => {
+  it('fetches and displays all characters details', async() => {
     await act(async() => {
       render(
         <MemoryRouter>
